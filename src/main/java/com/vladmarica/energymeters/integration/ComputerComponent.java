@@ -68,6 +68,22 @@ public class ComputerComponent implements IPeripheral {
     return new Object[] { rateValid };
   }
 
+  public Object[] setTotalEnergyTransferred(int total) {
+    boolean totalValid = total >= 0 || total == TileEntityEnergyMeterBase.UNLIMITED_RATE;
+
+    if(totalValid) {
+      this.meter.setTotalEnergyTransferred(total);
+    }
+
+    return new Object[] { totalValid };
+  }
+
+  public Object[] resetTotalEnergyTransferred() {
+    this.meter.setTotalEnergyTransferred(0);
+
+    return new Object[] { 0 };
+  }
+
   @Optional.Method(modid = ModIDs.COMPUTERCRAFT)
   @Nonnull
   @Override
@@ -87,7 +103,8 @@ public class ComputerComponent implements IPeripheral {
         "getEnergyType",
         "getEnergyTypeAlias",
         "getTransferRateLimit",
-        "setTransferRateLimit"
+        "setTransferRateLimit",
+        "setTotalEnergyTransferred"
     };
   }
 
