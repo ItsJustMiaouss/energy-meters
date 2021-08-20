@@ -526,5 +526,17 @@ public abstract class TileEntityEnergyMeterBase extends TileEntity implements IT
   public Object[] setTransferRateLimit(final Context context, final Arguments args) throws Exception {
     return this.computerComponent.setTransferRateLimit(args.checkInteger(0)) ;
   }
+
+  @Optional.Method(modid = ModIDs.OPENCOMPUTERS)
+  @Callback(doc = "function(total:number):bool -- attempts to set the total energy transferred.")
+  public Object[] setTotalEnergyTransferred(final Context context, final Arguments args) throws Exception {
+    return this.computerComponent.setTotalEnergyTransferred(args.checkInteger(0)) ;
+  }
+
+  @Optional.Method(modid = ModIDs.OPENCOMPUTERS)
+  @Callback(doc = "function(total:number):bool -- attempts reset the total energy transferred.")
+  public Object[] resetTotalEnergyTransferred(final Context context, final Arguments args) throws Exception {
+    return this.computerComponent.resetTotalEnergyTransferred() ;
+  }
   // End OpenComputers SimpleComponent implementation
 }
